@@ -1,7 +1,14 @@
 export default {
     state() {
         return {
-            tarjetas: [],
+            tarjetas: [
+                {
+                    id: '1231251251254125aa',
+                    tipo: 'VISA',
+                    descripcion: 'EJEMPLO',
+                    banco: 'MACRO'
+                }
+            ],
             cuotas: [],
             cuotaSelected: {},
             tarjetaSelected: {},

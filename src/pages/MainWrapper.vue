@@ -2,7 +2,6 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { ref } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore();
@@ -11,7 +10,7 @@ const store = useStore();
 <template>
     <div id="nav">
         <router-link to="/">Home</router-link> |
-        <router-link to="/setup">Setup</router-link>
+        <router-link to="/setup/tarjetas">Setup</router-link>
     </div>
     <router-view />
     <br><br><br><br>

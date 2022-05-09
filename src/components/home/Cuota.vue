@@ -23,6 +23,8 @@ const removeCuota = () => {
         <br>
         <label>Cuotas: {{cuota.cuotas}} / Pagadas {{cuota.pagadas}}</label>
         <br>
+        <label>Tarjeta: {{cuota.tarjeta}} </label>
+        <br>
         <label>Progreso: 0%</label>
         <br>
         <br>

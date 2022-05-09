@@ -7,7 +7,7 @@ const routes = [
     path: "/",
     name: "Home",
     // UNCOMMENT AFTER TESTING component: Home,
-    component: Tarjetas,
+    component: Home,
   },
   {
     path: "/setup/tarjetas",
