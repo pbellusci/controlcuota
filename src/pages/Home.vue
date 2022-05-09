@@ -3,9 +3,9 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import { ref } from 'vue'
 import { useStore } from 'vuex'
-import Cuota from '../components/Cuota.vue'
-import FormularioCuota from '../components/FormularioCuota.vue'
-import AreYouSureDeleteCuota from '../components/AreYouSureDeleteCuota.vue'
+import Cuota from '../components/home/Cuota.vue'
+import FormularioCuota from '../components/home/FormularioCuota.vue'
+import AreYouSureDeleteCuota from '../components/home/AreYouSureDeleteCuota.vue'
 
 const store = useStore();
 
@@ -28,7 +28,6 @@ const onToggleAreYouSureModal   = (value) => {
 </script>
 
 <template>
-    {{cuotas}}
     <!-- BALANCE -->
     <div v-if="displayBalanceAndList">
         <h1>La jarra loca</h1>  
@@ -47,7 +46,6 @@ const onToggleAreYouSureModal   = (value) => {
     <br>
     <br>
     <br>
-    <i> Build 1.0.0</i>
 </template>
 
 <style>
