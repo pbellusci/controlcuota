@@ -2,26 +2,47 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 import Cuota from '../components/Cuota.vue'
 import FormularioCuota from '../components/FormularioCuota.vue'
 import AreYouSureDeleteCuota from '../components/AreYouSureDeleteCuota.vue'
 
-const displayRemoveCuota = ref(false) 
-const displayCuotaForm = ref(false)
+const store = useStore();
 
-const onToggleFormCuota = (value) => displayCuotaForm.value = value
-const onToggleAreYouSureModal = (value) => displayRemoveCuota.value = value
+const balance = store.getters.balance
+const cuotas = store.getters.cuotas
+
+const displayRemoveCuota    = ref(false) 
+const displayCuotaForm      = ref(false)
+const displayBalanceAndList = ref(true)
+
+const onToggleFormCuota         = (value) => {
+    displayCuotaForm.value      = value
+    displayBalanceAndList.value = !value
+}
+const onToggleAreYouSureModal   = (value) => {
+    displayRemoveCuota.value    = value
+    displayBalanceAndList.value = !value
+}
 
 </script>
 
 <template>
-    <h1>La jarra loca</h1>  
-    <button @click="displayCuotaForm = true"> Nueva Compra</button>
-    <h2>5.000 ( 60.000 )</h2>
+    <!-- BALANCE -->
+    <div v-show="displayBalanceAndList">
+        <h1>La jarra loca</h1>  
+        <button @click="onToggleFormCuota(true)"> Nueva Compra</button>
+        <h3>Balance Actual <br/> 5.000 ( 60.000 )</h3>
+        <hr>
+    </div>
     
-    <Cuota @toggleDisplayRemoveCuotaModal="onToggleAreYouSureModal"/>
-    <FormularioCuota @toggleFormCuota="onToggleFormCuota" v-show="displayCuotaForm"/>
-    <AreYouSureDeleteCuota @toggleDisplayRemoveCuotaModal="onToggleAreYouSureModal" v-show="displayRemoveCuota"/>
+    <!-- cuotas -->
+    <div v-show="displayBalanceAndList">
+        <Cuota @toggleDisplayRemoveCuotaModal="onToggleAreYouSureModal" v-for="cuota in cuotas" :cuota="cuota" :key="cuota.id"/>
+    </div>
+    
+    <FormularioCuota @toggleFormCuota="onToggleFormCuota" v-if="displayCuotaForm"/>
+    <AreYouSureDeleteCuota @toggleDisplayRemoveCuotaModal="onToggleAreYouSureModal" v-if="displayRemoveCuota"/>
     <br>
     <br>
     <br>

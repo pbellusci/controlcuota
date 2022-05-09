@@ -1,21 +1,32 @@
 <script setup>
 import { defineEmits } from 'vue'
+import { useStore } from 'vuex'
 
+const props = defineProps({
+  cuota: Object
+})
+
+const store = useStore()
 const emit = defineEmits(['toggleDisplayRemoveCuotaModal'])
+
+const removeCuota = () => {
+    store.commit('selectCuota', props.cuota)
+    emit('toggleDisplayRemoveCuotaModal', true)
+}
 </script>
 
 <template>
     <div>
-        <h3> Remera Adidas Azul </h3>
-        <h2> $5.000  ($60.000) </h2>
-        <label> Compra hecha el 01/01/2022 </label>
+        <h3> {{cuota.descripcion}} </h3>
+        <h2> ${{cuota.costoCuota}}  (${{cuota.total}}) </h2>
+        <label> Compra hecha el {{cuota.fecha}} </label>
         <br>
-        <label>Cuotas: 12 / Pagadas 5</label>
+        <label>Cuotas: {{cuota.cuotas}} / Pagadas {{cuota.pagadas}}</label>
         <br>
-        <label>Progreso: 50%</label>
+        <label>Progreso: 0%</label>
         <br>
         <br>
-        <a href="#" @click="emit('toggleDisplayRemoveCuotaModal', true)"> Eliminar </a>
+        <a href="#" @click="removeCuota"> Eliminar </a>
     </div>
 </template>
 

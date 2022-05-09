@@ -1,11 +1,14 @@
 <script setup>
 import { defineEmits } from 'vue'
+import { useStore } from 'vuex'
 
+const store = useStore()
 const emit = defineEmits(['toggleDisplayRemoveCuotaModal'])
 </script>
 
 <template>
-    <div>
+    <div>   
+        {{store.getters.cuotaSelected}}
         <h1> Estas seguro de eliminar esta compra? </h1>
         <h3> Remera Adidas Azul </h3>
         <h2> $5.000  ($60.000) </h2>
