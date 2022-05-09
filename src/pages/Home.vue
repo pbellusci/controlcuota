@@ -28,8 +28,9 @@ const onToggleAreYouSureModal   = (value) => {
 </script>
 
 <template>
+    {{cuotas}}
     <!-- BALANCE -->
-    <div v-show="displayBalanceAndList">
+    <div v-if="displayBalanceAndList">
         <h1>La jarra loca</h1>  
         <button @click="onToggleFormCuota(true)"> Nueva Compra</button>
         <h3>Balance Actual <br/> 5.000 ( 60.000 )</h3>
@@ -37,7 +38,7 @@ const onToggleAreYouSureModal   = (value) => {
     </div>
     
     <!-- cuotas -->
-    <div v-show="displayBalanceAndList">
+    <div v-if="displayBalanceAndList">
         <Cuota @toggleDisplayRemoveCuotaModal="onToggleAreYouSureModal" v-for="cuota in cuotas" :cuota="cuota" :key="cuota.id"/>
     </div>
     

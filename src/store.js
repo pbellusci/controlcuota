@@ -17,7 +17,8 @@ export default {
             state.cuotas.push(cuota)
         },
         removeCuota(state, cuotaId) {
-            state.cuotas = []
+            const cuotaIndex = state.cuotas.findIndex(cuota => cuota.id === cuotaId)
+            state.cuotas.splice(cuotaIndex, 1)
         }
     },
     getters: {

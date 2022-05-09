@@ -4,22 +4,31 @@ import { useStore } from 'vuex'
 
 const store = useStore()
 const emit = defineEmits(['toggleDisplayRemoveCuotaModal'])
+
+const clearSelectedcuota = () => {
+    store.commit('selectCuota', {})
+    emit('toggleDisplayRemoveCuotaModal', false)
+}
+
+const removeCuota = () => {
+    store.commit('removeCuota', store.getters.cuotaSelected.id)
+    clearSelectedcuota()
+}
 </script>
 
 <template>
     <div>   
-        {{store.getters.cuotaSelected}}
         <h1> Estas seguro de eliminar esta compra? </h1>
-        <h3> Remera Adidas Azul </h3>
-        <h2> $5.000  ($60.000) </h2>
-        <label> Compra hecha el 01/01/2022 </label>
+        <h3> {{store.getters.cuotaSelected.descripcion}} </h3>
+        <h2> ${{store.getters.cuotaSelected.total}}  (${{store.getters.cuotaSelected.costoCuota}}) </h2>
+        <label> Compra hecha el {{store.getters.cuotaSelected.fecha}} </label>
         <br>
-        <label>Cuotas: 12 / Pagadas 5</label>
+        <label>Cuotas: {{store.getters.cuotaSelected.cuotas}} / Pagadas {{store.getters.cuotaSelected.pagadas}}</label>
         <br>
-        <label>Progreso: 50%</label>
+        <label>Progreso: 0%</label>
         <br>
-        <button @click="emit('toggleDisplayRemoveCuotaModal', false)">Si, estoy seguro. ELIMINAR</button>
-        <button @click="emit('toggleDisplayRemoveCuotaModal', false)">CANCELAR</button>
+        <button @click="removeCuota">Si, estoy seguro. ELIMINAR</button>
+        <button @click="clearSelectedcuota">CANCELAR</button>
     </div>
 </template>
 
