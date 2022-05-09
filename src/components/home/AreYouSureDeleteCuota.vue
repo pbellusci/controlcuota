@@ -5,14 +5,14 @@ import { useStore } from 'vuex'
 const store = useStore()
 const emit = defineEmits(['toggleDisplayRemoveCuotaModal'])
 
-const clearSelectedcuota = () => {
+const clearSelectedCuota = () => {
     store.commit('selectCuota', {})
     emit('toggleDisplayRemoveCuotaModal', false)
 }
 
 const removeCuota = () => {
     store.commit('removeCuota', store.getters.cuotaSelected.id)
-    clearSelectedcuota()
+    clearSelectedCuota()
 }
 </script>
 
@@ -28,7 +28,7 @@ const removeCuota = () => {
         <label>Progreso: 0%</label>
         <br>
         <button @click="removeCuota">Si, estoy seguro. ELIMINAR</button>
-        <button @click="clearSelectedcuota">CANCELAR</button>
+        <button @click="clearSelectedCuota">CANCELAR</button>
     </div>
 </template>
 

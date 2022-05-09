@@ -13,7 +13,7 @@ const tarjeta   = reactive({id: randomID()})
 const emit      = defineEmits(['toggleFormTarjeta'])
 
 const agregarTarjeta = () => {
-    //store.commit('pushCuota', cuota)
+    store.commit('pushTarjeta', tarjeta)
     emit('toggleFormTarjeta', false)
 }
 </script>

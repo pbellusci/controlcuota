@@ -6,6 +6,7 @@ import Tarjeta from '../../components/setup/Tarjeta.vue'
 import AreYouSureDeleteTarjeta from '../../components/setup/AreYouSureDeleteTarjeta.vue'
 
 const store = useStore()
+const tarjetas = store.getters.tarjetas
 const displayRemoveTarjetaModal     = ref(false) 
 const displayTarjetaForm            = ref(false)
 const displayTarjetaList            = ref(true)
@@ -24,7 +25,7 @@ const onToggleRemoveTarjetaModal  = (value) => {
     <h1> Listado de tarjetas </h1>
     <button @click="onToggleFormTarjeta(true)"> Agregar nueva tarjeta </button>
     <div v-if="displayTarjetaList">
-        <Tarjeta @toggleRemoveTarjetaModal="onToggleRemoveTarjetaModal"/>
+        <Tarjeta @toggleRemoveTarjetaModal="onToggleRemoveTarjetaModal" v-for="tarjeta in tarjetas" :tarjeta="tarjeta" :key="tarjeta.id"/>
     </div>
 
     <TarjetaForm @toggleFormTarjeta="onToggleFormTarjeta" v-if="displayTarjetaForm"/>

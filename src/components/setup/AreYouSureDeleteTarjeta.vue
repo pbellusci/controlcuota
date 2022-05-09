@@ -5,24 +5,24 @@ import { useStore } from 'vuex'
 const store = useStore()
 const emit = defineEmits(['toggleRemoveTarjetaModal'])
 
-const clearSelectedcuota = () => {
-    //store.commit('selectCuota', {})
+const clearSelectedTarjeta = () => {
+    store.commit('selectTarjeta', {})
     emit('toggleRemoveTarjetaModal', false)
 }
 
-const removeCuota = () => {
-    //store.commit('removeCuota', store.getters.cuotaSelected.id)
-    clearSelectedcuota()
+const removeTarjeta = () => {
+    store.commit('removeTarjeta', store.getters.tarjetaSelected.id)
+    clearSelectedTarjeta()
 }
 </script>
 
 <template>
     <div>   
         <h1> Estas seguro de eliminar esta Tarjeta? </h1>
-        <h2> Visa Macro 1 </h2>
+        <h2> {{ store.getters.tarjetaSelected.tipo }} -- {{ store.getters.tarjetaSelected.banco }} -- "{{ store.getters.tarjetaSelected.descripcion }}"</h2>
         <br>
-        <button @click="removeCuota">Si, estoy seguro. ELIMINAR</button>
-        <button @click="clearSelectedcuota">CANCELAR</button>
+        <button @click="removeTarjeta">Si, estoy seguro. ELIMINAR</button>
+        <button @click="clearSelectedTarjeta">CANCELAR</button>
     </div>
 </template>
 
