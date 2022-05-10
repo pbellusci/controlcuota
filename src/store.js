@@ -1,6 +1,17 @@
 export default {
     state() {
         return {
+            categorias: [
+                {
+                    nombre: 'Ropa'
+                },
+                {
+                    nombre: 'Vehiculo'
+                },
+                {
+                    nombre: 'Electronica'
+                },
+            ],
             tarjetas: [
                 {
                     id: '1231251251254125aa',
@@ -12,6 +23,7 @@ export default {
             cuotas: [],
             cuotaSelected: {},
             tarjetaSelected: {},
+            categoriaSelected: {},
             balance: {
                 total: 0,
                 totalCuotas: 0
@@ -25,11 +37,17 @@ export default {
         selectCuota(state, data) {
             state.cuotaSelected = data
         },
+        selectCategoria(state, data) {
+            state.categoriaSelected = data
+        },
         pushCuota(state, cuota) {
             state.cuotas.push(cuota)
         },
         pushTarjeta(state, tarjeta) {
             state.tarjetas.push(tarjeta)
+        },
+        pushCategoria(state, categoria) {
+            state.categorias.push(categoria)
         },
         removeCuota(state, cuotaId) {
             const cuotaIndex = state.cuotas.findIndex(cuota => cuota.id === cuotaId)
@@ -38,13 +56,19 @@ export default {
         removeTarjeta(state, tarjetaId) {
             const tarjetaIndex = state.tarjetas.findIndex(tarjeta => tarjeta.id === tarjetaId)
             state.tarjetas.splice(tarjetaIndex, 1)
+        },
+        removeCategoria(state, categoriaId) {
+            const categoriaIndex = state.categorias.findIndex(categoria => categoria.id === categoriaId)
+            state.categorias.splice(categoriaIndex, 1)
         }
     },
     getters: {
-        cuotas: (state)             => state.cuotas,
-        balance: (state)            => state.balance,
-        cuotaSelected: (state)      => state.cuotaSelected,
-        tarjetas: (state)           => state.tarjetas,
-        tarjetaSelected: (state)    => state.tarjetaSelected,
+        cuotas: (state)                 => state.cuotas,
+        balance: (state)                => state.balance,
+        cuotaSelected: (state)          => state.cuotaSelected,
+        tarjetas: (state)               => state.tarjetas,
+        tarjetaSelected: (state)        => state.tarjetaSelected,
+        categorias: (state)             => state.categorias,
+        categoriaSelected: (state)      => state.categoriaSelected,
     }
 }

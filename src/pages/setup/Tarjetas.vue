@@ -22,9 +22,9 @@ const onToggleRemoveTarjetaModal  = (value) => {
 </script>
 
 <template>
-    <h1> Listado de tarjetas </h1>
-    <button @click="onToggleFormTarjeta(true)"> Agregar nueva tarjeta </button>
-    <div v-if="displayTarjetaList">
+    <div v-if="displayTarjetaList">    
+        <h1> Listado de tarjetas </h1>
+        <button @click="onToggleFormTarjeta(true)"> Agregar nueva tarjeta </button>
         <Tarjeta @toggleRemoveTarjetaModal="onToggleRemoveTarjetaModal" v-for="tarjeta in tarjetas" :tarjeta="tarjeta" :key="tarjeta.id"/>
     </div>
 
