@@ -10,13 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_10_204812) do
+ActiveRecord::Schema.define(version: 2022_05_10_212435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "gastos", force: :cascade do |t|
+    t.string "descripcion"
+    t.decimal "total", precision: 10, scale: 2
+    t.integer "cantidad_cuotas"
+    t.decimal "valor_cuota", precision: 10, scale: 2
+    t.bigint "tarjetum_id"
+    t.bigint "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_gastos_on_category_id"
+    t.index ["tarjetum_id"], name: "index_gastos_on_tarjetum_id"
+  end
+
+  create_table "tarjeta", force: :cascade do |t|
+    t.string "tipo"
+    t.string "banco"
+    t.string "descripcion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

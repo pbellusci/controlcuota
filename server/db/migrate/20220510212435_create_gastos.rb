@@ -5,7 +5,8 @@ class CreateGastos < ActiveRecord::Migration[6.1]
       t.decimal :total, precision: 10, scale: 2
       t.integer :cantidad_cuotas
       t.decimal :valor_cuota, precision: 10, scale: 2
-      t.has_one :tarjetum, class_name: "tarjetum", foreign_key: "tarjetum" 
+      t.belongs_to :tarjetum
+      t.belongs_to :category
       t.timestamps
     end
   end
