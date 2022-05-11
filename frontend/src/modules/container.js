@@ -13,8 +13,8 @@ export default class {
       this.store.commit('setSetup', config.data)
       console.info('Setup loaded succesfuly')
     } catch(err) {
-        alert('No se pudo cargar la configuracion')
-        console.log('Error: ', err)
+        console.error('No se pudo cargar la configuracion')
+        console.error('Error: ', err)
     }
   }
 
@@ -23,8 +23,8 @@ export default class {
         const config = await getAllCategorias()
         this.store.commit('setCategorias', config.data)
     } catch(err) {
-        alert('No se pudieron cargar las categorias')
-        console.log('Error: ', err)
+        console.error('No se pudieron cargar las categorias')
+        console.error('Error: ', err)
     }
   }
 }

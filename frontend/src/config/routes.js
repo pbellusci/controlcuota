@@ -12,3 +12,6 @@ export const GASTOS = '/gastos'
 
 export const TARJETA = '/tarjeta'
 export const GASTO = '/gasto'
+
+export const SIGN_IN = '/users/sign_in'
+export const SIGN_UP = '/users'
