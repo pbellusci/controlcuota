@@ -2,16 +2,23 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import Container from './Container.vue'
+import { useStore } from 'vuex'
+import ContainerModule from '../modules/container'
+const store = useStore();
+
+const Container = new ContainerModule(store)
+await Container.loadSetup()
+await Container.loadCategorias()
+
 </script>
 
 <template>
-    <Suspense>
-      <Container/>
-    </Suspense>
-    <i> Build 1.0.0</i>
+    <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/setup">Setup</router-link>
+    </div>
+    <router-view />
 </template>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

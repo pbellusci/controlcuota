@@ -21,7 +21,7 @@ const agregarCategoria = () => {
 <template>
     <form>
         <h3>Agregar Categoria</h3>
-        <input type="text" placeholder="Tipo" required v-model="categoria.nombre">
+        <input type="text" placeholder="Tipo" required v-model="categoria.name">
         <button type="button" @click="agregarCategoria"> Guardar </button>
         <button type="button" @click="emit('toggleFormCategoria', false)"> Cancelar </button>
     </form>

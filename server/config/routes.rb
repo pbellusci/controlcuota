@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :gastos
-  resources :tarjeta
+  resources :tarjetas
   namespace :common_data do
     get 'all', action: 'index'
     get 'bancos'

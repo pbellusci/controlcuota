@@ -15,7 +15,7 @@ const removeCategoria = () => {
 </script>
 
 <template>
-    <h2>{{ categoria.nombre}}</h2>
+    <h2>{{ categoria.name}}</h2>
     <a href="#"  @click="removeCategoria"> Eliminar </a>
 </template>
 

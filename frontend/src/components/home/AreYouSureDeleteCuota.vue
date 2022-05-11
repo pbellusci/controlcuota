@@ -17,7 +17,7 @@ const removeCuota = () => {
 </script>
 
 <template>
-    <div>   
+    <div>
         <h1> Estas seguro de eliminar esta compra? </h1>
         <h3> {{store.getters.cuotaSelected.descripcion}} </h3>
         <h2> ${{store.getters.cuotaSelected.total}}  (${{store.getters.cuotaSelected.costoCuota}}) </h2>

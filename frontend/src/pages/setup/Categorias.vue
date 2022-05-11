@@ -4,10 +4,10 @@ import { useStore } from 'vuex'
 import CategoriaForm from '../../components/setup/CategoriaForm.vue'
 import Categoria from '../../components/setup/Categoria.vue'
 import AreYouSureDeleteCategoria from '../../components/setup/AreYouSureDeleteCategoria.vue'
+import { getAllCategorias } from '../../services/categorias'
 
 const store = useStore()
-const categorias = store.getters.categorias
-const displayRemoveCategoriaModal     = ref(false) 
+const displayRemoveCategoriaModal     = ref(false)
 const displayCategoriaForm            = ref(false)
 const displayCategoriaList            = ref(true)
 
@@ -19,6 +19,9 @@ const onToggleRemoveCategoriaModal  = (value) => {
     displayRemoveCategoriaModal.value    = value
     displayCategoriaList.value = !value
 }
+
+const categorias = store.getters.categorias
+
 </script>
 
 <template>

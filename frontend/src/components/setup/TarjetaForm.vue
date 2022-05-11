@@ -16,14 +16,23 @@ const agregarTarjeta = () => {
     store.commit('pushTarjeta', tarjeta)
     emit('toggleFormTarjeta', false)
 }
+console.log(store.getters.setup)
 </script>
 
 <template>
     <form>
         <h3>Agregar Tarjeta</h3>
-        <input type="text" placeholder="Tipo" required v-model="tarjeta.tipo">
+        <select v-model="tarjeta.tipo" required>
+            <option value=""></option>
+            <option v-for="tipo, index in store.getters.getSetup.tipo_tarjeta" :value="tipo" :key="index">{{tipo}}</option>
+        </select>
+
+        <select v-model="tarjeta.banco" required>
+            <option value=""></option>
+            <option v-for="tipo, index in store.getters.getSetup.bancos" :value="tipo" :key="index">{{tipo}}</option>
+        </select>
+
         <input type="text" placeholder="Descripcion" required v-model="tarjeta.descripcion">
-        <input type="text" placeholder="Banco" required v-model="tarjeta.banco">
         <button type="button" @click="agregarTarjeta"> Guardar </button>
         <button type="button" @click="emit('toggleFormTarjeta', false)"> Cancelar </button>
     </form>

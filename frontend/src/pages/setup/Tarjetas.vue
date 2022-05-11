@@ -7,7 +7,7 @@ import AreYouSureDeleteTarjeta from '../../components/setup/AreYouSureDeleteTarj
 
 const store = useStore()
 const tarjetas = store.getters.tarjetas
-const displayRemoveTarjetaModal     = ref(false) 
+const displayRemoveTarjetaModal     = ref(false)
 const displayTarjetaForm            = ref(false)
 const displayTarjetaList            = ref(true)
 
@@ -19,10 +19,11 @@ const onToggleRemoveTarjetaModal  = (value) => {
     displayRemoveTarjetaModal.value    = value
     displayTarjetaList.value = !value
 }
+
 </script>
 
 <template>
-    <div v-if="displayTarjetaList">    
+    <div v-if="displayTarjetaList">
         <h1> Listado de tarjetas </h1>
         <button @click="onToggleFormTarjeta(true)"> Agregar nueva tarjeta </button>
         <Tarjeta @toggleRemoveTarjetaModal="onToggleRemoveTarjetaModal" v-for="tarjeta in tarjetas" :tarjeta="tarjeta" :key="tarjeta.id"/>

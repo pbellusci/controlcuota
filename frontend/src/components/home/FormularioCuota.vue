@@ -30,6 +30,10 @@ const agregarCuota = () => {
             <option value="" selected="selected"> Seleccionar Tarjeta (opcional)</option>
             <option v-for="tarjeta in store.getters.tarjetas" :key="tarjeta.id" :value="tarjeta.id"> {{tarjeta.tipo}} - {{tarjeta.banco}} - {{tarjeta.descripcion}} </option>
         </select>
+        <select v-model="cuota.categoria">
+            <option value="" selected="selected">  </option>
+            <option v-for="categoria in store.getters.categorias" :key="categoria.id" :value="categoria.id"> {{categoria.name}} </option>
+        </select>
         <button type="button" @click="agregarCuota"> Guardar </button>
         <button type="button" @click="emit('toggleFormCuota', false)"> Cancelar </button>
     </form>

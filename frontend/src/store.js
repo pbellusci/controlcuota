@@ -1,17 +1,11 @@
 export default {
     state() {
         return {
-            categorias: [
-                {
-                    nombre: 'Ropa'
-                },
-                {
-                    nombre: 'Vehiculo'
-                },
-                {
-                    nombre: 'Electronica'
-                },
-            ],
+            setup: {
+                bancos: [],
+                tipos_tarjeta: [],
+            },
+            categorias: [],
             tarjetas: [
                 {
                     id: '1231251251254125aa',
@@ -31,6 +25,12 @@ export default {
         }
     },
     mutations: {
+        setSetup(state, data) {
+            state.setup = data
+        },
+        setCategorias(state, data) {
+            state.categorias = data
+        },
         selectTarjeta(state, data) {
             state.tarjetaSelected = data
         },
@@ -69,6 +69,7 @@ export default {
         tarjetas: (state)               => state.tarjetas,
         tarjetaSelected: (state)        => state.tarjetaSelected,
         categorias: (state)             => state.categorias,
-        categoriaSelected: (state)      => state.categoriaSelected,
+        categoriaSelected: (state) => state.categoriaSelected,
+        getSetup: (state) => state.setup
     }
 }

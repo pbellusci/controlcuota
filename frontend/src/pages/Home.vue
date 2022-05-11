@@ -9,10 +9,10 @@ import AreYouSureDeleteCuota from '../components/home/AreYouSureDeleteCuota.vue'
 
 const store = useStore();
 
-const balance = store.getters.balance
-const cuotas = store.getters.cuotas
+const balance   = store.getters.balance
+const cuotas    = store.getters.cuotas
 
-const displayRemoveCuota    = ref(false) 
+const displayRemoveCuota    = ref(false)
 const displayCuotaForm      = ref(false)
 const displayBalanceAndList = ref(true)
 
@@ -24,23 +24,22 @@ const onToggleAreYouSureModal   = (value) => {
     displayRemoveCuota.value    = value
     displayBalanceAndList.value = !value
 }
-
 </script>
 
 <template>
     <!-- BALANCE -->
     <div v-if="displayBalanceAndList">
-        <h1>La jarra loca</h1>  
+        <h1>La jarra loca</h1>
         <button @click="onToggleFormCuota(true)"> Nueva Compra</button>
         <h3>Balance Actual <br/> 5.000 ( 60.000 )</h3>
         <hr>
     </div>
-    
+
     <!-- cuotas -->
     <div v-if="displayBalanceAndList">
         <Cuota @toggleDisplayRemoveCuotaModal="onToggleAreYouSureModal" v-for="cuota in cuotas" :cuota="cuota" :key="cuota.id"/>
     </div>
-    
+
     <FormularioCuota @toggleFormCuota="onToggleFormCuota" v-if="displayCuotaForm"/>
     <AreYouSureDeleteCuota @toggleDisplayRemoveCuotaModal="onToggleAreYouSureModal" v-if="displayRemoveCuota"/>
     <br>
