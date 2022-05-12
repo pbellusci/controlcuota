@@ -3,10 +3,14 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import { useStore } from 'vuex'
+import { useCookies } from "vue3-cookies";
 import ContainerModule from '../modules/container'
-const store = useStore();
+import { getCurrentUserData } from '../services/users'
 
+const store = useStore();
 const Container = new ContainerModule(store)
+
+const currentUser = getCurrentUserData()
 await Container.loadSetup()
 await Container.loadCategorias()
 
@@ -14,6 +18,7 @@ await Container.loadCategorias()
 
 <template>
     <div id="nav">
+        {{currentUser}}
         <router-link to="/">Home</router-link> |
         <router-link to="/setup">Setup</router-link>
     </div>
